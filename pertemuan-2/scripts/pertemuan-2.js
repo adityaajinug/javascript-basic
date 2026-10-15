@@ -100,3 +100,14 @@ for (let k = 1; k <= 20; k++) {
         console.log("Ga valid")
     }
 }
+
+const elementBuah = document.getElementById("buah");
+for (const item of buah) {
+    const el = `<div id="item">
+            <h1>${item.nama}</h1>
+            <p>${item.warna}</p>
+        </div>
+        `;
+
+    elementBuah.innerHTML += el;
+}
