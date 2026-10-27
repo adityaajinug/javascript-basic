@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+        /* class ini dipasang oleh JavaScript lewat classList */
+        .out-of-stock { opacity: 0.5; text-decoration: line-through; }
+        .active { font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1 id="title">Pertemuan 5</h1>
+    <p id="message"></p>
+
+    <div id="tech-stack">
+        <h2>Tech Stack</h2>
+        <ul class="list"></ul>
+    </div>
+
+    <div id="product">
+        <h2>Product</h2>
+
+        <!-- data-category dibaca JavaScript lewat button.dataset.category -->
+        <div class="filters">
+            <button type="button" data-category="all" class="active">All</button>
+            <button type="button" data-category="Smartphone">Smartphone</button>
+            <button type="button" data-category="Laptop">Laptop</button>
+            <button type="button" data-category="AC">AC</button>
+        </div>
+
+        <input type="text" id="search" placeholder="Cari nama produk">
+
+        <ul class="list"></ul>
+    </div>
+
+    <form id="form-product">
+        <h2>Tambah Product</h2>
+        <input type="text" name="name" placeholder="Nama">
+        <input type="number" name="price" placeholder="Harga">
+        <select name="category">
+            <option value="Smartphone">Smartphone</option>
+            <option value="Laptop">Laptop</option>
+            <option value="AC">AC</option>
+        </select>
+        <button type="submit">Tambah</button>
+    </form>
+
+    <!-- script diletakkan paling bawah supaya semua element sudah ada saat dicari -->
+    <script src="scripts/script.js"></script>
+</body>
+</html>
