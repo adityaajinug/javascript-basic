@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Await</title>
+    <style>
+        .error { color: crimson; }
+        .out-of-stock { opacity: 0.5; text-decoration: line-through; }
+    </style>
+</head>
+<body>
+    <h1>Pertemuan 6 : Async Await</h1>
+
+    <div id="product">
+        <h2>Product (data JSON)</h2>
+
+        <button type="button" id="btn-then">Muat pakai .then</button>
+        <button type="button" id="btn-await">Muat pakai async/await</button>
+        <button type="button" id="btn-error">Muat (sengaja gagal)</button>
+
+        <!-- status: loading / sukses / error, diisi oleh JavaScript -->
+        <p id="status">Belum ada data</p>
+
+        <ul class="list"></ul>
+    </div>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>

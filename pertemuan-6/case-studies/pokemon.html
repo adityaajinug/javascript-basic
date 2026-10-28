@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon API</title>
+    <style>
+        body { font-family: system-ui, sans-serif; max-width: 48rem; margin: 1rem auto; padding: 0 1rem; }
+        .error { color: crimson; }
+        .grid { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); gap: 0.8rem; }
+        .card { border: 1px solid #ccd; border-radius: 12px; padding: 0.6rem; text-align: center; }
+        .card img { width: 96px; height: 96px; }
+        .card h3 { margin: 0; text-transform: capitalize; font-size: 1rem; }
+        .card small { color: #667; }
+    </style>
+</head>
+<body>
+    <h1>Pokemon API</h1>
+
+    <!-- CARI pokemon berdasarkan nama -->
+    <form id="form-search">
+        <input type="text" name="name" placeholder="mis. pikachu">
+        <button type="submit">Cari</button>
+    </form>
+
+    <p id="status"></p>
+
+    <h2>Hasil pencarian</h2>
+    <ul class="grid" id="result"></ul>
+
+    <h2>8 Pokemon pertama</h2>
+    <ul class="grid" id="list"></ul>
+
+    <script src="pokemon.js"></script>
+</body>
+</html>
