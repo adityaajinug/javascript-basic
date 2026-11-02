@@ -1,6 +1,6 @@
 # Belajar JavaScript Dasar
 
-Repositori catatan belajar JavaScript dasar dari Teching Academy. Saat ini mencakup **Pertemuan 1 sampai 6**.
+Repositori catatan belajar JavaScript dasar dari Teching Academy. Saat ini mencakup **Pertemuan 1 sampai 8**.
 
 ## Struktur Folder
 
@@ -17,20 +17,37 @@ javascript-basic/
 │       ├── count.html
 │       ├── count.js
 │       └── kalkulator/
-└── pertemuan-6/
+├── pertemuan-6/
+│   ├── index.html
+│   ├── catatan.md
+│   ├── scripts/
+│   └── case-studies/
+│       ├── pokemon.html
+│       └── pokemon.js
+├── pertemuan-7/
+│   ├── index.html
+│   ├── catatan.md
+│   ├── scripts/
+│   └── case-studies/
+│       ├── todo.html
+│       └── todo.js
+└── pertemuan-8/
     ├── index.html
     ├── catatan.md
     ├── scripts/
     └── case-studies/
-        ├── pokemon.html
-        └── pokemon.js
+        └── pokeorder/
+            ├── catalog.html, cart.html, payment.html
+            ├── success.html, failed.html
+            ├── css/style.css
+            └── js/
 ```
 
-Setiap folder berisi file HTML dan folder `scripts` untuk kode JavaScript-nya. Pertemuan 5 dan 6 juga punya folder `case-studies` untuk latihan studi kasus (pertemuan 5: counter dan kalkulator, pertemuan 6: PokeAPI). Pertemuan 6 punya `catatan.md` berisi rundown dan catatan pengajar.
+Setiap folder berisi file HTML dan folder `scripts` untuk kode JavaScript-nya. Pertemuan 5 sampai 8 juga punya folder `case-studies` untuk latihan studi kasus (pertemuan 5: counter dan kalkulator, pertemuan 6: PokeAPI, pertemuan 7: Todo List, pertemuan 8: PokeOrder). Pertemuan 6 sampai 8 punya `catatan.md` berisi rundown dan catatan pengajar.
 
 ## Cara Menjalankan
 
-Buka file HTML pertemuan di browser, lalu tekan `F12` untuk melihat hasilnya di Console. Untuk pertemuan 5 dan 6, hasilnya juga tampil langsung di halaman. Studi kasus PokeAPI di pertemuan 6 membutuhkan koneksi internet.
+Buka file HTML pertemuan di browser, lalu tekan `F12` untuk melihat hasilnya di Console. Untuk pertemuan 5 sampai 8, hasilnya juga tampil langsung di halaman. Studi kasus PokeAPI (pertemuan 6) dan PokeOrder (pertemuan 8) membutuhkan koneksi internet.
 
 ## Ringkasan Materi
 
@@ -42,3 +59,5 @@ Buka file HTML pertemuan di browser, lalu tekan `F12` untuk melihat hasilnya di 
 | 4 | Array dan method: `push`, `unshift`, `pop`, `shift`, `forEach`, `map`, `filter`, `find`, `some`, `every`, `reduce`, dan `sort`, serta menampilkan data array ke halaman HTML. |
 | 5 | DOM (*Document Object Model*): mencari element (`getElementById`, `querySelector`, `querySelectorAll`), mengubah element (`textContent`, `innerHTML`, `classList`, `style`, `dataset`), membuat element (`createElement`, `append`), event (`addEventListener`, *event delegation*, `input`, `keydown`, `submit`, `preventDefault`), serta render data dari array dengan filter, pencarian, tambah, dan hapus produk. Studi kasus: counter dan kalkulator. |
 | 6 | Async await: sinkron vs asinkron (`setTimeout`), `Promise` (`resolve`, `reject`, status *pending / fulfilled / rejected*), `.then / .catch / .finally`, `async / await` dengan `try / catch / finally`, `fetch` dan pengecekan `response.ok`, `Promise.all`, serta menampilkan keadaan *loading*, sukses, dan error. Render data dengan `innerHTML` dan template string. Studi kasus: PokeAPI (daftar dan pencarian pokemon). |
+| 7 | `localStorage` dan `sessionStorage`: `setItem`, `getItem`, `removeItem`, `clear`, menyimpan array dan object dengan `JSON.stringify` / `JSON.parse`, serta pembungkus `saveData` / `loadData`. Alur baca, ubah, simpan, render. Studi kasus: Todo List. |
+| 8 | Project akhir PokeOrder: toko online kecil dengan data PokeAPI. Katalog dengan pencarian, filter, dan pengurutan, keranjang, validasi form checkout, pembayaran (simulasi), dan halaman hasil. Memakai gabungan materi pertemuan 1 sampai 7 dengan CSS biasa tanpa framework. |
