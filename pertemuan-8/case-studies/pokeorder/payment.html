@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokeOrder - Pembayaran</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header__inner">
+            <a class="logo" href="catalog.html">PokeOrder</a>
+            <div class="header__spacer"></div>
+            <a href="cart.html" class="cart-link">
+                <span class="material-symbols-outlined">shopping_bag</span>
+                <span>Keranjang</span>
+                <span>(<span data-cart-count>0</span>)</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="container page">
+
+        <!-- Langkah 2 dari 3 -->
+        <ol class="steps">
+            <li class="is-done"><span class="num"><span class="material-symbols-outlined">check</span></span><span class="label">Keranjang &amp; Pengiriman</span></li>
+            <li class="line"></li>
+            <li class="is-active"><span class="num">2</span><span class="label">Pembayaran</span></li>
+            <li class="line"></li>
+            <li><span class="num">3</span><span class="label">Selesai</span></li>
+        </ol>
+
+        <!-- Keadaan : belum ada pesanan -->
+        <div id="no-order" class="state hidden">
+            <span class="material-symbols-outlined">receipt_long</span>
+            <h2>Belum ada pesanan untuk dibayar</h2>
+            <p class="muted">Isi keranjang dan data pengiriman dulu.</p>
+            <a href="cart.html" class="btn btn--primary">Ke Keranjang</a>
+        </div>
+
+        <div id="payment-content" class="payment">
+
+            <!-- ===== KIRI : instruksi dan unggah bukti ===== -->
+            <section class="panel payment__left">
+
+                <div class="bank">
+                    <div class="bank__head">
+                        <div class="bank__logo">BCA</div>
+                        <div>
+                            <h3>Bank Central Asia (BCA)</h3>
+                            <p>Transfer Manual / Antar Bank</p>
+                        </div>
+                    </div>
+
+                    <div class="bank__grid">
+                        <div class="bank__box">
+                            <small>Nomor Rekening</small>
+                            <div class="row">
+                                <span class="bank__number">8830 1928 3341</span>
+                                <button type="button" data-copy="883019283341" class="copy-btn">
+                                    <span class="material-symbols-outlined">content_copy</span>Salin
+                                </button>
+                            </div>
+                            <p class="muted">Atas Nama: <strong>PT PokeOrder Indonesia</strong></p>
+                        </div>
+
+                        <div class="bank__box">
+                            <small>Total Tagihan</small>
+                            <div class="row">
+                                <span id="transfer-amount" class="bank__amount">Rp 0</span>
+                                <button type="button" id="btn-copy-amount" class="copy-btn">
+                                    <span class="material-symbols-outlined">content_copy</span>Salin
+                                </button>
+                            </div>
+                            <p class="muted">Transfer sesuai nominal tagihan.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="howto">
+                    <h4><span class="material-symbols-outlined">format_list_numbered</span>Petunjuk Transfer</h4>
+                    <ol>
+                        <li>Buka aplikasi m-Banking atau datang ke ATM terdekat.</li>
+                        <li>Pilih menu <strong>Transfer</strong> lalu <strong>Antar Rekening</strong> (atau ke Bank BCA).</li>
+                        <li>Masukkan rekening <strong>8830 1928 3341</strong> a.n. <strong>PT PokeOrder Indonesia</strong>.</li>
+                        <li>Masukkan nominal sesuai total tagihan.</li>
+                        <li>Simpan struk transfer, lalu unggah di bawah ini.</li>
+                    </ol>
+                </div>
+
+                <!-- ===== Unggah bukti ===== -->
+                <div class="upload-section">
+                    <div>
+                        <h4>Unggah Bukti Transfer</h4>
+                        <p>Format JPG atau PNG, maksimum 2 MB.</p>
+                    </div>
+
+                    <!-- Area tarik-lepas. Kotak input aslinya disembunyikan, label yang diklik -->
+                    <div id="dropzone" class="upload">
+                        <input id="proof-input" type="file" accept="image/png, image/jpeg">
+                        <label for="proof-input">
+                            <span class="upload__icon"><span class="material-symbols-outlined">cloud_upload</span></span>
+                            <span><em>Klik untuk telusuri</em> atau seret struk ke sini</span>
+                            <small>Ukuran file maksimal 2 MB</small>
+                        </label>
+                    </div>
+
+                    <!-- Keadaan : file valid terpilih -->
+                    <div id="file-card" class="file-card hidden">
+                        <div class="file-card__info">
+                            <img id="file-preview" alt="Pratinjau bukti transfer">
+                            <div>
+                                <div class="file-card__name">
+                                    <span id="file-name"></span>
+                                    <span class="valid-tag"><span class="material-symbols-outlined">check_circle</span>Valid</span>
+                                </div>
+                                <small id="file-size"></small>
+                            </div>
+                        </div>
+                        <button id="btn-remove-file" type="button" title="Hapus file" aria-label="Hapus file" class="icon-btn">
+                            <span class="material-symbols-outlined">delete</span>
+                        </button>
+                    </div>
+
+                    <!-- Keadaan : file bermasalah -->
+                    <div id="file-error" class="alert alert--error hidden">
+                        <span class="material-symbols-outlined">error</span>
+                        <div>
+                            <strong>Berkas tidak valid</strong>
+                            <p id="file-error-text"></p>
+                        </div>
+                    </div>
+
+                    <div class="submit-area">
+                        <label class="check">
+                            <input type="checkbox" id="simulate-fail">
+                            <span>Simulasikan order gagal (mode demo)</span>
+                        </label>
+
+                        <button id="btn-submit" type="button" class="btn btn--primary btn--lg btn--block" disabled>
+                            <span class="material-symbols-outlined">send</span>
+                            <span id="btn-submit-text">Kirim Bukti Pembayaran</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== KANAN : ringkasan pesanan ===== -->
+            <section class="panel order">
+                <div class="order__head">
+                    <h3><span class="material-symbols-outlined">receipt_long</span>Ringkasan Pesanan</h3>
+                    <span id="order-id" class="order__id"></span>
+                </div>
+
+                <div class="order__box">
+                    <div id="order-items"></div>
+
+                    <div class="order__totals">
+                        <div><span>Subtotal Produk</span><span id="order-subtotal"></span></div>
+                        <div><span>Ongkir Flat</span><span id="order-shipping"></span></div>
+                        <div class="grand">
+                            <span>Total Tagihan:</span>
+                            <strong id="order-total"></strong>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p class="container">© PokeOrder API Store - Demo Proyek Pembelajaran JavaScript (data dari PokeAPI)</p>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/payment.js"></script>
+</body>
+</html>

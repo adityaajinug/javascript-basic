@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokeOrder - Katalog Pokémon Kanto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <div class="container header__inner">
+            <a class="logo" href="catalog.html">PokeOrder</a>
+
+            <!-- Kolom cari -->
+            <div class="search">
+                <span class="material-symbols-outlined">search</span>
+                <input id="search" class="input" type="search" autocomplete="off" placeholder="Cari Pokémon (misal: Pikachu)...">
+            </div>
+
+            <div class="header__spacer"></div>
+
+            <!-- Tombol filter (hanya muncul di layar kecil) -->
+            <button id="btn-open-filter" type="button" class="btn filter-toggle">
+                <span class="material-symbols-outlined">tune</span>Filter
+            </button>
+
+            <!-- Keranjang -->
+            <a href="cart.html" class="cart-link cart-link--primary">
+                <span class="material-symbols-outlined">shopping_bag</span>
+                <span>Keranjang</span>
+                <span>(<span data-cart-count>0</span>)</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Lapisan gelap di belakang drawer filter (layar kecil) -->
+    <div id="filter-overlay" class="overlay"></div>
+
+    <!-- ================= ISI ================= -->
+    <main class="container page">
+        <div class="catalog">
+
+            <!-- ===== SIDEBAR FILTER ===== -->
+            <!-- Di layar besar tampil di kiri. Di layar kecil berubah jadi drawer yang digeser dari kiri -->
+            <aside id="sidebar" class="sidebar">
+
+                <div class="sidebar__head">
+                    <h2><span class="material-symbols-outlined">tune</span>Filter</h2>
+                    <div class="sidebar__tools">
+                        <button id="btn-reset" type="button" class="btn btn--link">Reset filter</button>
+                        <button id="btn-close-filter" type="button" class="sidebar__close" aria-label="Tutup filter">
+                            <span class="material-symbols-outlined">close</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Penanda jumlah filter aktif (disembunyikan kalau 0) -->
+                <p id="active-count" class="hidden">
+                    <span class="active-count"></span>
+                </p>
+
+                <!-- Tipe: kotak centang dibuat oleh JavaScript dari array TYPES -->
+                <div class="filter-group">
+                    <h3>Elemen &amp; Tipe</h3>
+                    <div id="type-list" class="type-list"></div>
+                </div>
+
+                <!-- Rentang harga -->
+                <div class="filter-group">
+                    <h3>Rentang Harga (Rp)</h3>
+                    <div class="price-grid">
+                        <div>
+                            <label for="min-price">Min</label>
+                            <input id="min-price" class="input input--small" type="number" min="0" step="5000" placeholder="0">
+                        </div>
+                        <div>
+                            <label for="max-price">Max</label>
+                            <input id="max-price" class="input input--small" type="number" min="0" step="5000" placeholder="250000">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hanya yang ada stok -->
+                <div class="switch-row">
+                    <label for="only-available">Hanya Stok Tersedia</label>
+                    <span class="switch">
+                        <input id="only-available" type="checkbox">
+                        <span class="switch__track"></span>
+                    </span>
+                </div>
+
+                <!-- Urutkan -->
+                <div class="filter-group">
+                    <label for="sort"><h3>Urutkan Berdasarkan</h3></label>
+                    <select id="sort" class="select">
+                        <option value="id">ID Pokedex: Rendah-Tinggi</option>
+                        <option value="price-asc">Harga: Termurah</option>
+                        <option value="price-desc">Harga: Termahal</option>
+                        <option value="name">Nama A-Z</option>
+                    </select>
+                </div>
+            </aside>
+
+            <!-- ===== DAFTAR PRODUK ===== -->
+            <section class="catalog__main">
+                <div class="panel toolbar">
+                    <div>
+                        <h1>Katalog Pokémon Kanto</h1>
+                        <p id="count-text">Memuat data...</p>
+                    </div>
+                    <span>Urutan: <strong id="sort-label">ID Pokedex</strong></span>
+                </div>
+
+                <!-- Grid kartu. Isinya dibuat oleh JavaScript -->
+                <ul id="grid" class="grid"></ul>
+
+                <!-- Keadaan : data tidak ditemukan -->
+                <div id="state-empty" class="state hidden">
+                    <span class="material-symbols-outlined">search_off</span>
+                    <h2>Pokémon tidak ditemukan</h2>
+                    <p class="muted">Coba kata kunci lain atau kurangi filter.</p>
+                    <button type="button" data-action="reset" class="btn btn--outline">Reset filter</button>
+                </div>
+
+                <!-- Keadaan : gagal memuat -->
+                <div id="state-error" class="state state--error hidden">
+                    <span class="material-symbols-outlined">wifi_off</span>
+                    <h2>Gagal memuat katalog</h2>
+                    <p id="error-message"></p>
+                    <button type="button" data-action="retry" class="btn btn--primary">Coba lagi</button>
+                </div>
+
+                <!-- Muat lebih banyak -->
+                <div id="load-more-wrap" class="load-more">
+                    <button id="btn-load-more" type="button" class="btn btn--outline btn--lg">
+                        <span class="material-symbols-outlined">sync</span>
+                        Muat Lebih Banyak Pokémon
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- ================= MODAL DETAIL ================= -->
+    <div id="detail-modal" class="modal hidden">
+        <div class="modal__box">
+            <button type="button" data-action="close-modal" aria-label="Tutup" class="modal__close">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <div id="detail-body"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p class="container">© PokeOrder API Store - Demo Proyek Pembelajaran JavaScript (data dari PokeAPI)</p>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/catalog.js"></script>
+</body>
+</html>

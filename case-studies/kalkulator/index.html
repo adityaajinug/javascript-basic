@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="calculator">
+        <!-- layar : history kecil di atas, angka besar di bawah -->
+        <div class="screen-wrap">
+            <p class="history" id="history"></p>
+            <output class="screen" id="screen">0</output>
+        </div>
+
+        <div class="buttons" id="buttons">
+            <button type="button" class="function" data-type="action" data-value="clear">Ac</button>
+            <button type="button" class="function" data-type="action" data-value="delete" aria-label="Backspace">⌫</button>
+            <button type="button" class="operator" data-type="operator" data-value="/">÷</button>
+            <button type="button" class="operator" data-type="operator" data-value="*">×</button>
+
+            <button type="button" data-type="number" data-value="7">7</button>
+            <button type="button" data-type="number" data-value="8">8</button>
+            <button type="button" data-type="number" data-value="9">9</button>
+            <button type="button" class="operator" data-type="operator" data-value="-">−</button>
+
+            <button type="button" data-type="number" data-value="4">4</button>
+            <button type="button" data-type="number" data-value="5">5</button>
+            <button type="button" data-type="number" data-value="6">6</button>
+            <button type="button" class="operator tall" data-type="operator" data-value="+">+</button>
+
+            <button type="button" data-type="number" data-value="1">1</button>
+            <button type="button" data-type="number" data-value="2">2</button>
+            <button type="button" data-type="number" data-value="3">3</button>
+
+            <button type="button" class="wide" data-type="number" data-value="0">0</button>
+            <button type="button" data-type="action" data-value="dot">.</button>
+            <button type="button" class="equal" data-type="action" data-value="equal">=</button>
+        </div>
+    </main>
+
+    <!-- <script src="script.js"></script> -->
+    <script src="cheatsheet.js"></script>
+</body>
+</html>

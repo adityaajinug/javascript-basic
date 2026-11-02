@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pemanasan : Search dan Filter</title>
+    <style>
+        .out-of-stock { opacity: 0.5; text-decoration: line-through; }
+        .row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.8rem; }
+    </style>
+</head>
+<body>
+    <h1>Pertemuan 8 : Project PokeOrder</h1>
+    <p>Pemanasan dulu (halaman ini), lalu project utama di
+        <a href="case-studies/pokeorder/catalog.html">case-studies/pokeorder</a>.</p>
+
+    <h2>Pemanasan : search + filter + urutkan</h2>
+
+    <div class="row">
+        <input type="text" id="search" placeholder="Cari nama...">
+
+        <select id="category">
+            <option value="all">Semua kategori</option>
+            <option value="Smartphone">Smartphone</option>
+            <option value="Laptop">Laptop</option>
+            <option value="AC">AC</option>
+        </select>
+
+        <select id="sort">
+            <option value="name">Nama A-Z</option>
+            <option value="cheap">Termurah</option>
+            <option value="expensive">Termahal</option>
+        </select>
+
+        <label><input type="checkbox" id="only-available"> Hanya yang ada stok</label>
+    </div>
+
+    <p id="count"></p>
+    <ul class="list"></ul>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>

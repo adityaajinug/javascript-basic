@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+        body { font-family: system-ui, sans-serif; max-width: 36rem; margin: 1rem auto; padding: 0 1rem; }
+        .error { color: crimson; }
+        .todo-list { list-style: none; padding: 0; }
+        .todo-list li { display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0; border-bottom: 1px solid #e3e3ea; }
+        .todo-list li span { flex: 1; }
+        .done span { text-decoration: line-through; opacity: 0.55; }
+        .filters button.active { font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Todo List</h1>
+
+    <!-- TAMBAH todo. Teks yang belum dikirim disimpan sebagai draft di sessionStorage -->
+    <form id="form-todo">
+        <input type="text" name="title" placeholder="Tulis tugas...">
+        <button type="submit">Tambah</button>
+    </form>
+    <p id="status"></p>
+
+    <!-- FILTER, pilihan terakhir disimpan di sessionStorage -->
+    <div class="filters">
+        <button type="button" data-filter="all">Semua</button>
+        <button type="button" data-filter="active">Belum selesai</button>
+        <button type="button" data-filter="done">Selesai</button>
+    </div>
+
+    <ul class="todo-list" id="todo-list"></ul>
+
+    <button type="button" id="btn-clear-done">Hapus yang selesai</button>
+
+    <script src="todo.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokeOrder - Pesanan Berhasil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="success">
+
+    <header class="header">
+        <div class="container header__inner">
+            <a class="logo" href="catalog.html">PokeOrder</a>
+            <div class="header__spacer"></div>
+            <a href="cart.html" class="cart-link">
+                <span class="material-symbols-outlined">shopping_bag</span>
+                <span>Keranjang</span>
+                <span>(<span data-cart-count>0</span>)</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="container page">
+
+        <!-- Langkah 3 dari 3 -->
+        <ol class="steps">
+            <li class="is-done"><span class="num"><span class="material-symbols-outlined">check</span></span><span class="label">Keranjang &amp; Pengiriman</span></li>
+            <li class="line"></li>
+            <li class="is-done"><span class="num"><span class="material-symbols-outlined">check</span></span><span class="label">Pembayaran</span></li>
+            <li class="line"></li>
+            <li class="is-done"><span class="num">3</span><span class="label">Selesai</span></li>
+        </ol>
+
+        <!-- Keadaan : tidak ada data pesanan -->
+        <div id="no-data" class="state hidden">
+            <span class="material-symbols-outlined">receipt_long</span>
+            <h2>Tidak ada data pesanan</h2>
+            <a href="catalog.html" class="btn btn--primary">Ke Katalog</a>
+        </div>
+
+        <div id="result-content" class="result">
+
+            <!-- ===== KIRI : status ===== -->
+            <div class="result__left">
+                <div class="panel result-card">
+                    <div class="status-icon">
+                        <span class="material-symbols-outlined fill-icon">check_circle</span>
+                    </div>
+                    <h1>Pesanan Berhasil Dibuat!</h1>
+                    <p>Terima kasih sudah berbelanja di PokeOrder. Bukti pembayaranmu sudah kami terima.</p>
+
+                    <div class="order-no">
+                        <div>
+                            <small>Nomor Pesanan</small>
+                            <strong id="order-number"></strong>
+                        </div>
+                        <button id="btn-copy" type="button" class="btn">
+                            <span class="material-symbols-outlined">content_copy</span>Salin
+                        </button>
+                    </div>
+
+                    <div class="notice">
+                        <span class="material-symbols-outlined">hourglass_top</span>
+                        <div>
+                            <h4>Menunggu Verifikasi Pembayaran</h4>
+                            <p>Bukti pembayaran <strong id="proof-name"></strong> akan dicek admin (estimasi ±10 menit).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel actions">
+                    <a href="catalog.html" class="btn btn--primary btn--lg">
+                        <span class="material-symbols-outlined">storefront</span>Belanja Lagi di Katalog
+                    </a>
+                    <button id="btn-print" type="button" class="btn btn--blue">
+                        <span class="material-symbols-outlined">download</span>Unduh Bukti
+                    </button>
+                </div>
+            </div>
+
+            <!-- ===== KANAN : ringkasan ===== -->
+            <div class="panel">
+                <div class="order__head">
+                    <h3>Ringkasan Pesanan</h3>
+                    <span id="badge" class="result__badge">MENUNGGU VERIFIKASI</span>
+                </div>
+
+                <div id="items"></div>
+
+                <div class="result__totals">
+                    <div><span id="subtotal-label">Subtotal Produk</span><strong id="subtotal"></strong></div>
+                    <div><span>Ongkos Kirim Flat</span><strong id="shipping"></strong></div>
+                    <div class="grand">
+                        <span>Total Pembayaran</span>
+                        <strong id="total"></strong>
+                    </div>
+                </div>
+
+                <div class="ship">
+                    <h3><span class="material-symbols-outlined">local_shipping</span>Tujuan Pengiriman</h3>
+                    <div class="ship__box">
+                        <strong id="customer-name"></strong>
+                        <p id="customer-phone" class="muted"></p>
+                        <p id="customer-address"></p>
+                        <p id="customer-note" class="ship__note hidden"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p class="container">© PokeOrder API Store - Demo Proyek Pembelajaran JavaScript (data dari PokeAPI)</p>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/result.js"></script>
+</body>
+</html>

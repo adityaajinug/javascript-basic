@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Storage</title>
+    <style>
+        .out-of-stock { opacity: 0.5; text-decoration: line-through; }
+        .favorite { font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Pertemuan 7 : localStorage dan sessionStorage</h1>
+
+    <div id="product">
+        <h2>Product</h2>
+
+        <!-- Pilihan kategori disimpan di sessionStorage (hilang saat tab ditutup) -->
+        <label for="filter-category">Kategori</label>
+        <select id="filter-category">
+            <option value="all">Semua</option>
+            <option value="Smartphone">Smartphone</option>
+            <option value="Laptop">Laptop</option>
+            <option value="AC">AC</option>
+        </select>
+
+        <!-- Daftar favorit disimpan di localStorage (tetap ada walau browser ditutup) -->
+        <p id="status"></p>
+        <ul class="list"></ul>
+
+        <button type="button" id="btn-clear">Hapus semua favorit</button>
+    </div>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>

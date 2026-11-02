@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokeOrder - Keranjang dan Checkout</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header__inner">
+            <a class="logo" href="catalog.html">PokeOrder</a>
+            <div class="header__spacer"></div>
+            <a href="catalog.html" class="cart-link">
+                <span class="material-symbols-outlined">storefront</span>
+                <span>Lanjut Belanja</span>
+                <span>(<span data-cart-count>0</span>)</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="container page">
+
+        <!-- Langkah 1 dari 3 -->
+        <ol class="steps">
+            <li class="is-active"><span class="num">1</span><span class="label">Keranjang &amp; Pengiriman</span></li>
+            <li class="line"></li>
+            <li><span class="num">2</span><span class="label">Pembayaran</span></li>
+            <li class="line"></li>
+            <li><span class="num">3</span><span class="label">Selesai</span></li>
+        </ol>
+
+        <div class="page-head">
+            <h1 class="page-title">Checkout Pesanan</h1>
+            <p class="page-subtitle">Selesaikan rincian pesanan dan alamat tujuan pengiriman.</p>
+        </div>
+
+        <!-- Keadaan : keranjang kosong -->
+        <div id="empty-cart" class="state hidden">
+            <span class="material-symbols-outlined">shopping_bag</span>
+            <h2>Keranjang masih kosong</h2>
+            <p class="muted">Pilih Pokémon favoritmu di katalog dulu.</p>
+            <a href="catalog.html" class="btn btn--primary">Ke Katalog</a>
+        </div>
+
+        <div id="cart-content" class="checkout">
+
+            <!-- ===== KIRI : daftar item dan form ===== -->
+            <div class="checkout__left">
+
+                <section class="panel">
+                    <div class="section__head">
+                        <span class="section__num">1</span>
+                        <h2 id="items-title">Daftar Pokémon Pilihan</h2>
+                    </div>
+                    <!-- Isinya dibuat oleh JavaScript -->
+                    <div id="cart-items" class="cart-list"></div>
+                </section>
+
+                <section class="panel">
+                    <div class="section__head">
+                        <span class="section__num">2</span>
+                        <div>
+                            <h2>Data Penerima &amp; Alamat Pengiriman</h2>
+                            <p>Pastikan data akurat supaya pesanan sampai.</p>
+                        </div>
+                    </div>
+
+                    <!-- novalidate : validasi kita tulis sendiri dengan JavaScript, bukan bawaan browser -->
+                    <form id="checkout-form" novalidate>
+                        <div class="row-2">
+                            <div class="field">
+                                <label for="name" class="field__label">Nama Lengkap Penerima <span>*</span></label>
+                                <input id="name" name="name" class="input" type="text" autocomplete="name">
+                                <p data-error="name" class="field__error hidden"></p>
+                            </div>
+                            <div class="field">
+                                <label for="phone" class="field__label">Nomor Handphone (WhatsApp) <span>*</span></label>
+                                <input id="phone" name="phone" class="input" type="tel" autocomplete="tel" placeholder="08xxxxxxxxxx">
+                                <p data-error="phone" class="field__error hidden"></p>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="address" class="field__label">Alamat Pengiriman Lengkap <span>*</span></label>
+                            <textarea id="address" name="address" class="textarea" rows="3" placeholder="Nama jalan, nomor bangunan, kota, kode pos..."></textarea>
+                            <p data-error="address" class="field__error hidden"></p>
+                        </div>
+
+                        <div class="field">
+                            <label for="note" class="field__hint">
+                                <span>Catatan untuk Kurir</span>
+                                <small>Opsional</small>
+                            </label>
+                            <input id="note" name="note" class="input" type="text" placeholder="Contoh: titipkan ke satpam jika rumah kosong">
+                        </div>
+                    </form>
+                </section>
+            </div>
+
+            <!-- ===== KANAN : ringkasan ===== -->
+            <div class="checkout__summary">
+                <div class="panel summary">
+                    <div class="summary__head">
+                        <h2>Ringkasan Belanja</h2>
+                        <span id="summary-qty" class="summary__qty">0 Item</span>
+                    </div>
+
+                    <div class="summary__rows">
+                        <div>
+                            <span id="summary-subtotal-label">Subtotal Produk</span>
+                            <strong id="summary-subtotal">Rp 0</strong>
+                        </div>
+                        <div>
+                            <span>Ongkir Flat</span>
+                            <strong id="summary-shipping">Rp 0</strong>
+                        </div>
+                    </div>
+
+                    <div class="summary__total">
+                        <span>Total Tagihan</span>
+                        <strong id="summary-total">Rp 0</strong>
+                    </div>
+
+                    <!-- type="submit" + form="..." : tombol di luar form tetap mengirim form itu -->
+                    <button type="submit" form="checkout-form" id="btn-checkout" class="btn btn--primary btn--lg btn--block">
+                        Lanjut ke Pembayaran
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+
+                    <div class="summary__note">
+                        <span class="material-symbols-outlined fill-icon">verified</span>
+                        Demo proyek JavaScript, tidak ada pembayaran sungguhan
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p class="container">© PokeOrder API Store - Demo Proyek Pembelajaran JavaScript (data dari PokeAPI)</p>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>

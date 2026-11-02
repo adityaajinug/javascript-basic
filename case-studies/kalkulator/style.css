@@ -1,0 +1,160 @@
+/* ===== Variabel warna & ukuran ===== */
+:root {
+    --bg-page: #d8e9f7;
+    --bg-card: #f8fafc;
+    --bg-button: #ffffff;
+    --bg-operator: rgba(186, 230, 253, 0.65);
+    --bg-operator-hover: rgba(186, 230, 253, 0.8);
+    --bg-equal: #0088ff;
+    --bg-equal-hover: #0077ee;
+
+    --text-dark: #1e293b;
+    --text-muted: #64748b;
+    --text-function: #475569;
+    --text-blue: #0284c7;
+
+    --shadow-card: 0 25px 60px -15px rgba(147, 197, 253, 0.35),
+                   0 10px 25px -10px rgba(0, 0, 0, 0.04);
+    --shadow-button: 0 2px 5px rgba(224, 236, 248, 0.6),
+                     0 1px 2px rgba(0, 0, 0, 0.02);
+    --shadow-equal: 0 4px 14px rgba(0, 136, 255, 0.35);
+
+    --radius-card: 42px;
+    --radius-button: 22px;
+    --gap: 12px;
+}
+
+/* ===== Reset ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== Halaman ===== */
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: var(--bg-page);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+                 "SF Pro Text", Inter, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    user-select: none;
+}
+
+/* ===== Kartu kalkulator ===== */
+.calculator {
+    width: 100%;
+    max-width: 340px;
+    padding: 24px;
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+}
+
+/* ===== Layar ===== */
+.screen-wrap {
+    padding: 32px 8px 28px;
+    text-align: right;
+}
+
+.history {
+    min-height: 26px;
+    margin-bottom: 6px;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.screen {
+    display: block;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    color: var(--text-dark);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ===== Papan tombol ===== */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 56px);
+    gap: var(--gap);
+    padding-bottom: 8px;
+}
+
+/* ===== Tombol dasar (angka) ===== */
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:active {
+    transform: scale(0.94);
+    filter: brightness(0.96);
+}
+
+.buttons button {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text-blue);
+    background: var(--bg-button);
+    border-radius: var(--radius-button);
+    box-shadow: var(--shadow-button);
+}
+
+.buttons button:hover {
+    background: #f8fafc;
+}
+
+/* ===== Variasi tombol ===== */
+.buttons .function {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-function);
+}
+
+.buttons .operator {
+    font-size: 26px;
+    font-weight: 600;
+    background: var(--bg-operator);
+}
+
+.buttons .operator:hover {
+    background: var(--bg-operator-hover);
+}
+
+.buttons .equal {
+    font-size: 26px;
+    font-weight: 700;
+    color: #ffffff;
+    background: var(--bg-equal);
+    box-shadow: var(--shadow-equal);
+}
+
+.buttons .equal:hover {
+    background: var(--bg-equal-hover);
+}
+
+/* ===== Ukuran khusus ===== */
+.buttons .tall {
+    grid-row: span 2;
+}
+
+.buttons .wide {
+    grid-column: span 2;
+}
